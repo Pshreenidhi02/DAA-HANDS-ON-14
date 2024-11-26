@@ -1,13 +1,6 @@
 def floyd_warshall(graph):
-    """
-    Floyd-Warshall algorithm for finding shortest paths between all pairs of nodes.
-    Parameters:
-        graph (dict): Adjacency matrix representation of the graph where graph[u][v] is the weight of the edge u -> v,
-                      or float('inf') if there is no edge.
-    Returns:
-        dist (dict): Matrix containing shortest distances between all pairs of nodes.
-    """
-    # Initialize distances with graph's adjacency matrix
+  
+
     nodes = list(graph.keys())
     dist = {u: {v: graph[u][v] for v in nodes} for u in nodes}
 
@@ -30,7 +23,7 @@ def print_matrix(matrix):
         row = [f"{matrix[i][j]:3}" if matrix[i][j] != float('inf') else "inf" for j in nodes]
         print(f"{i}: ", " ".join(row))
 
-# Test case: Graph from the given image
+
 nodes = [1, 2, 3, 4]
 inf = float('inf')
 
@@ -41,7 +34,7 @@ graph = {
     4: {1: 1, 2: inf, 3: inf, 4: 0},
 }
 
-# Print initial adjacency matrix (T^(0))
+
 print("Initial Adjacency Matrix (T^(0)):")
 print_matrix(graph)
 
