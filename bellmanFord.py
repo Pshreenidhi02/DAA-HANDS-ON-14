@@ -1,15 +1,5 @@
 def bellman_ford(graph, start):
-    """
-    Bellman-Ford algorithm for finding shortest paths in a graph with negative weights.
-    Parameters:
-        graph (list of tuples): Edge list where each edge is represented as (u, v, weight).
-        start (str): Starting node.
-    Returns:
-        distances (dict): Shortest distance from start to each node.
-        predecessors (dict): Parent dictionary for path reconstruction.
-        has_negative_cycle (bool): True if the graph contains a negative-weight cycle.
-    """
-    # Extract nodes from the graph
+
     nodes = set()
     for u, v, _ in graph:
         nodes.add(u)
@@ -19,14 +9,14 @@ def bellman_ford(graph, start):
     predecessors = {node: None for node in nodes}
     distances[start] = 0
 
-    # Relax edges |V| - 1 times
+
     for _ in range(len(nodes) - 1):
         for u, v, weight in graph:
             if distances[u] + weight < distances[v]:
                 distances[v] = distances[u] + weight
                 predecessors[v] = u
 
-    # Check for negative-weight cycles
+  
     for u, v, weight in graph:
         if distances[u] + weight < distances[v]:
             return distances, predecessors, True  # Negative cycle detected
@@ -34,15 +24,7 @@ def bellman_ford(graph, start):
     return distances, predecessors, False
 
 def reconstruct_path(predecessors, start, end):
-    """
-    Reconstructs the shortest path from start to end using the predecessors dictionary.
-    Parameters:
-        predecessors (dict): Parent dictionary.
-        start (str): Starting node.
-        end (str): Ending node.
-    Returns:
-        list: The shortest path from start to end as a list of nodes.
-    """
+   
     path = []
     current = end
     while current is not None:
@@ -50,7 +32,7 @@ def reconstruct_path(predecessors, start, end):
         current = predecessors[current]
     return path[::-1] if path and path[-1] == start else []
 
-# Test cases from provided diagrams
+# Test cases from diagrams
 test_cases = [
     {
         "graph": [
@@ -87,7 +69,7 @@ test_cases = [
     },
 ]
 
-# Run all test cases
+
 print("Bellman-Ford Algorithm Test Cases\n" + "=" * 40)
 for i, case in enumerate(test_cases, 1):
     graph = case["graph"]
