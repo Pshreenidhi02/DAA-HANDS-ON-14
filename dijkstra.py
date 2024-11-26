@@ -1,15 +1,7 @@
 import heapq
 
 def dijkstra(graph, start):
-    """
-    Dijkstra's algorithm for finding the shortest path in a weighted graph.
-    Parameters:
-        graph (dict): Adjacency list (node -> [(neighbor, weight)]).
-        start (str): Starting node.
-    Returns:
-        distances (dict): Shortest distance from the start node to each node.
-        previous (dict): Tracks the parent of each node in the shortest path tree.
-    """
+  
     distances = {node: float('inf') for node in graph}
     distances[start] = 0
     previous = {node: None for node in graph}
@@ -30,15 +22,7 @@ def dijkstra(graph, start):
     return distances, previous
 
 def reconstruct_path(previous, start, end):
-    """
-    Reconstructs the shortest path from start to end using the parent dictionary.
-    Parameters:
-        previous (dict): Parent dictionary (node -> parent node).
-        start (str): Starting node.
-        end (str): Destination node.
-    Returns:
-        list: The shortest path from start to end as a list of nodes.
-    """
+  
     path = []
     current = end
     while current is not None:
@@ -46,7 +30,7 @@ def reconstruct_path(previous, start, end):
         current = previous[current]
     return path[::-1] if path and path[-1] == start else []
 
-# Graphs for testing
+
 test_cases = [
     {
         "graph": {
@@ -103,7 +87,7 @@ test_cases = [
     }
 ]
 
-# Run all test cases
+
 print("Dijkstra's Algorithm Test Cases\n" + "="*30)
 for i, case in enumerate(test_cases, 1):
     graph = case["graph"]
